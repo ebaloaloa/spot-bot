@@ -42,7 +42,7 @@ public class BinanceMarketServiceImpl implements MarketService {
         try {
             result = client.getAllPrices();
         } catch(Exception e) {
-            log.error("Failed to retrieve exchange information");
+            log.error("Failed to retrieve ticker prices");
         }
         return result;
     }

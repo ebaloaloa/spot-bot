@@ -43,23 +43,23 @@ public class LunarCrushStrategy {
             tradingSymbols.forEach(symbolRecord -> {
                 try {
                     tradeService.closePosition(symbolRecord);
+                    symbolRecord.setIsTrading(false);
+                    symbolRepository.save(symbolRecord);
                 } catch (Exception e) {
-                    log.error(String.format("Failed closing position: %s", e.getMessage()));
+                    log.error(String.format("Failed closing position for symbol %s: %s", symbolRecord.getSymbol(), e.getMessage()));
                 }
-                symbolRecord.setIsTrading(false);
-                symbolRepository.save(symbolRecord);
             });
             symbolRecords.forEach(symbolRecord -> {
                 BigDecimal qty = getQty(symbolRecord, symbolRecords);
                 if (qty.compareTo(BigDecimal.ZERO) > 0) {
                     try {
                         tradeService.newOrder(symbolRecord.getSymbol(), qty);
+                        symbolRecord.setIsTrading(true);
+                        symbolRepository.save(symbolRecord);
                     } catch (Exception e) {
-                        log.error(String.format("Failed creating new order: %s", e.getMessage()));
+                        log.error(String.format("Failed creating new order for symbol %s: %s", symbolRecord.getSymbol(), e.getMessage()));
                     }
                 }
-                symbolRecord.setIsTrading(true);
-                symbolRepository.save(symbolRecord);
             });
         }
     }

@@ -52,7 +52,8 @@ public class BinanceTradeServiceImpl implements TradeService {
                 .map(Order::getExecutedQty)
                 .map(BigDecimal::new)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
-                .setScale(scale, RoundingMode.UNNECESSARY)
+                .setScale(scale, RoundingMode.HALF_DOWN)
+                .multiply(BigDecimal.valueOf(0.99))
                 .toString();
         client.newOrder(NewOrder.marketSell(symbolRecord.getSymbol(), qty));
     }
