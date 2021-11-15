@@ -2,6 +2,8 @@ package com.lickhunter.spotbot.services.impl;
 
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.domain.OrderSide;
+import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.account.NewOrder;
 import com.binance.api.client.domain.account.NewOrderResponse;
 import com.binance.api.client.domain.account.NewOrderResponseType;
@@ -19,7 +21,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -47,13 +51,15 @@ public class BinanceTradeServiceImpl implements TradeService {
         AllOrdersRequest ordersRequest = new AllOrdersRequest(symbolRecord.getSymbol());
         ordersRequest.orderId(orderId);
         Integer scale = BigDecimal.valueOf(symbolRecord.getStepSize()).stripTrailingZeros().scale();
-        List<Order> orderList = client.getAllOrders(ordersRequest);
-        String qty = orderList.stream()
-                .map(Order::getExecutedQty)
-                .map(BigDecimal::new)
-                .reduce(BigDecimal.ZERO, BigDecimal::add)
+        List<Order> orderList = client.getAllOrders(ordersRequest)
+                .stream()
+                .filter(order -> order.getType().equals(OrderType.MARKET) && order.getSide().equals(OrderSide.BUY))
+                .sorted(Comparator.comparing(Order::getTime).reversed())
+                .collect(Collectors.toList());
+        String qty = new BigDecimal(orderList.get(0)
+                .getExecutedQty())
+                .multiply(BigDecimal.valueOf(0.9999))
                 .setScale(scale, RoundingMode.HALF_DOWN)
-                .multiply(BigDecimal.valueOf(0.99))
                 .toString();
         client.newOrder(NewOrder.marketSell(symbolRecord.getSymbol(), qty));
     }

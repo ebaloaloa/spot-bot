@@ -12,6 +12,7 @@ public class SpotbotApplication {
 
 	@Autowired
 	private ApplicationController applicationController;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpotbotApplication.class, args);
 	}

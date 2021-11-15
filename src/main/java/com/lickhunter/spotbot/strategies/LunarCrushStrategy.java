@@ -47,6 +47,8 @@ public class LunarCrushStrategy {
                     symbolRepository.save(symbolRecord);
                 } catch (Exception e) {
                     log.error(String.format("Failed closing position for symbol %s: %s", symbolRecord.getSymbol(), e.getMessage()));
+                } finally {
+                    applicationController.getAccountInformation();
                 }
             });
             symbolRecords.forEach(symbolRecord -> {
@@ -72,6 +74,7 @@ public class LunarCrushStrategy {
                         .divide(BigDecimal.valueOf(100D), 2, RoundingMode.HALF_DOWN))
                 .divide(BigDecimal.valueOf(symbolRecords.size()), 2, RoundingMode.HALF_DOWN)
                 .divide(BigDecimal.valueOf(symbolRecord.getPrice()), scale, RoundingMode.HALF_DOWN) //markPrice
+                .multiply(BigDecimal.valueOf(0.99))
                 .setScale(scale, RoundingMode.HALF_DOWN);
         return qty.compareTo(BigDecimal.valueOf(symbolRecord.getStepSize())) > 0 ? qty : BigDecimal.ZERO;
     }
