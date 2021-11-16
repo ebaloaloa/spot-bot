@@ -66,33 +66,33 @@ public class Datum {
     @JsonProperty("mc")
     private Long mc;
     @JsonProperty("gs")
-    private Integer gs;
+    private Long gs;
     @JsonProperty("ss")
-    private Integer ss;
+    private Long ss;
     @JsonProperty("as")
     private Double as;
     @JsonProperty("bl")
-    private Integer bl;
+    private Long bl;
     @JsonProperty("br")
-    private Integer br;
+    private Long br;
     @JsonProperty("sp")
-    private Integer sp;
+    private Long sp;
     @JsonProperty("na")
-    private Integer na;
+    private Long na;
     @JsonProperty("md")
-    private Integer md;
+    private Long md;
     @JsonProperty("t")
-    private Integer t;
+    private Long t;
     @JsonProperty("r")
-    private Integer r;
+    private Long r;
     @JsonProperty("yt")
-    private Integer yt;
+    private Long yt;
     @JsonProperty("sv")
-    private Integer sv;
+    private Long sv;
     @JsonProperty("u")
-    private Integer u;
+    private Long u;
     @JsonProperty("c")
-    private Integer c;
+    private Long c;
     @JsonProperty("sd")
     private Double sd;
     @JsonProperty("d")
@@ -100,15 +100,15 @@ public class Datum {
     @JsonProperty("cr")
     private Double cr;
     @JsonProperty("acr")
-    private Integer acr;
+    private Long acr;
     @JsonProperty("tc")
-    private Integer tc;
+    private Long tc;
     @JsonProperty("categories")
     private String categories;
     @JsonProperty("df")
-    private Integer df;
+    private Long df;
     @JsonProperty("e2")
-    private Integer e2;
+    private Long e2;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -213,22 +213,22 @@ public class Datum {
     }
 
     @JsonProperty("gs")
-    public Integer getGs() {
+    public Long getGs() {
         return gs;
     }
 
     @JsonProperty("gs")
-    public void setGs(Integer gs) {
+    public void setGs(Long gs) {
         this.gs = gs;
     }
 
     @JsonProperty("ss")
-    public Integer getSs() {
+    public Long getSs() {
         return ss;
     }
 
     @JsonProperty("ss")
-    public void setSs(Integer ss) {
+    public void setSs(Long ss) {
         this.ss = ss;
     }
 
@@ -243,112 +243,112 @@ public class Datum {
     }
 
     @JsonProperty("bl")
-    public Integer getBl() {
+    public Long getBl() {
         return bl;
     }
 
     @JsonProperty("bl")
-    public void setBl(Integer bl) {
+    public void setBl(Long bl) {
         this.bl = bl;
     }
 
     @JsonProperty("br")
-    public Integer getBr() {
+    public Long getBr() {
         return br;
     }
 
     @JsonProperty("br")
-    public void setBr(Integer br) {
+    public void setBr(Long br) {
         this.br = br;
     }
 
     @JsonProperty("sp")
-    public Integer getSp() {
+    public Long getSp() {
         return sp;
     }
 
     @JsonProperty("sp")
-    public void setSp(Integer sp) {
+    public void setSp(Long sp) {
         this.sp = sp;
     }
 
     @JsonProperty("na")
-    public Integer getNa() {
+    public Long getNa() {
         return na;
     }
 
     @JsonProperty("na")
-    public void setNa(Integer na) {
+    public void setNa(Long na) {
         this.na = na;
     }
 
     @JsonProperty("md")
-    public Integer getMd() {
+    public Long getMd() {
         return md;
     }
 
     @JsonProperty("md")
-    public void setMd(Integer md) {
+    public void setMd(Long md) {
         this.md = md;
     }
 
     @JsonProperty("t")
-    public Integer getT() {
+    public Long getT() {
         return t;
     }
 
     @JsonProperty("t")
-    public void setT(Integer t) {
+    public void setT(Long t) {
         this.t = t;
     }
 
     @JsonProperty("r")
-    public Integer getR() {
+    public Long getR() {
         return r;
     }
 
     @JsonProperty("r")
-    public void setR(Integer r) {
+    public void setR(Long r) {
         this.r = r;
     }
 
     @JsonProperty("yt")
-    public Integer getYt() {
+    public Long getYt() {
         return yt;
     }
 
     @JsonProperty("yt")
-    public void setYt(Integer yt) {
+    public void setYt(Long yt) {
         this.yt = yt;
     }
 
     @JsonProperty("sv")
-    public Integer getSv() {
+    public Long getSv() {
         return sv;
     }
 
     @JsonProperty("sv")
-    public void setSv(Integer sv) {
+    public void setSv(Long sv) {
         this.sv = sv;
     }
 
     @JsonProperty("u")
-    public Integer getU() {
+    public Long getU() {
         return u;
     }
 
     @JsonProperty("u")
-    public void setU(Integer u) {
+    public void setU(Long u) {
         this.u = u;
     }
 
     @JsonProperty("c")
-    public Integer getC() {
+    public Long getC() {
         return c;
     }
 
     @JsonProperty("c")
-    public void setC(Integer c) {
+    public void setC(Long c) {
         this.c = c;
     }
 
@@ -383,22 +383,22 @@ public class Datum {
     }
 
     @JsonProperty("acr")
-    public Integer getAcr() {
+    public Long getAcr() {
         return acr;
     }
 
     @JsonProperty("acr")
-    public void setAcr(Integer acr) {
+    public void setAcr(Long acr) {
         this.acr = acr;
     }
 
     @JsonProperty("tc")
-    public Integer getTc() {
+    public Long getTc() {
         return tc;
     }
 
     @JsonProperty("tc")
-    public void setTc(Integer tc) {
+    public void setTc(Long tc) {
         this.tc = tc;
     }
 
@@ -413,22 +413,22 @@ public class Datum {
     }
 
     @JsonProperty("df")
-    public Integer getDf() {
+    public Long getDf() {
         return df;
     }
 
     @JsonProperty("df")
-    public void setDf(Integer df) {
+    public void setDf(Long df) {
         this.df = df;
     }
 
     @JsonProperty("e2")
-    public Integer getE2() {
+    public Long getE2() {
         return e2;
     }
 
     @JsonProperty("e2")
-    public void setE2(Integer e2) {
+    public void setE2(Long e2) {
         this.e2 = e2;
     }
 

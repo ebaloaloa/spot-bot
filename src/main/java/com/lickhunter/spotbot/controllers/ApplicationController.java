@@ -47,8 +47,8 @@ public class ApplicationController {
                     .forEach(datum -> symbolRepository.save(symbolConverter
                                 .convertFromDto(new SymbolDto()
                                         .withSymbol(datum.getS().concat("USDT"))
-                                        .withGalaxyScore(datum.getGs())
-                                        .withAltRank(datum.getAcr())
+                                        .withGalaxyScore(datum.getGs().intValue())
+                                        .withAltRank(datum.getAcr().intValue())
                                 )));
         }
         return ResponseEntity.ok(null);

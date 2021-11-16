@@ -5,6 +5,7 @@ package com.lickhunter.spotbot.entities.tables.records;
 
 
 import com.lickhunter.spotbot.entities.tables.Account;
+
 import org.jooq.Field;
 import org.jooq.Record1;
 import org.jooq.Record2;

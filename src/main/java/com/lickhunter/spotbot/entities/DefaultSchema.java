@@ -6,12 +6,13 @@ package com.lickhunter.spotbot.entities;
 
 import com.lickhunter.spotbot.entities.tables.Account;
 import com.lickhunter.spotbot.entities.tables.Symbol;
-import org.jooq.Catalog;
-import org.jooq.Table;
-import org.jooq.impl.SchemaImpl;
 
 import java.util.Arrays;
 import java.util.List;
+
+import org.jooq.Catalog;
+import org.jooq.Table;
+import org.jooq.impl.SchemaImpl;
 
 
 /**

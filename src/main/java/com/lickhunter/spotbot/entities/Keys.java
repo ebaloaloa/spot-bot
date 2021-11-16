@@ -8,6 +8,7 @@ import com.lickhunter.spotbot.entities.tables.Account;
 import com.lickhunter.spotbot.entities.tables.Symbol;
 import com.lickhunter.spotbot.entities.tables.records.AccountRecord;
 import com.lickhunter.spotbot.entities.tables.records.SymbolRecord;
+
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;

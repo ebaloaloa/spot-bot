@@ -17,7 +17,7 @@ public class SymbolConverter extends Converter<SymbolDto, SymbolRecord> {
     private static SymbolDto convertToDto(SymbolRecord symbolRecord) {
         return new SymbolDto()
                 .withSymbol(symbolRecord.getSymbol())
-                .withGalaxyScore(symbolRecord.getGalaxyScore())
+                .withGalaxyScore(symbolRecord.getGalaxyScore().intValue())
                 .withAltRank(symbolRecord.getAltRank())
                 .withQuotePrecision(symbolRecord.getQuotePrecision())
                 .withStepSize(BigDecimal.valueOf(symbolRecord.getStepSize()))
@@ -29,7 +29,7 @@ public class SymbolConverter extends Converter<SymbolDto, SymbolRecord> {
     private static SymbolRecord convertToEntity(SymbolDto symbolDto) {
         SymbolRecord symbolRecord = new SymbolRecord();
         symbolRecord.setSymbol(symbolDto.getSymbol());
-        symbolRecord.setGalaxyScore(Objects.nonNull(symbolDto.getGalaxyScore()) ? symbolDto.getGalaxyScore() : null);
+        symbolRecord.setGalaxyScore(Objects.nonNull(symbolDto.getGalaxyScore()) ? symbolDto.getGalaxyScore().intValue() : null);
         symbolRecord.setAltRank(Objects.nonNull(symbolDto.getAltRank()) ? symbolDto.getAltRank() : null);
         symbolRecord.setQuotePrecision(Objects.nonNull(symbolDto.getQuotePrecision()) ? symbolDto.getQuotePrecision() : null);
         symbolRecord.setStepSize(Objects.nonNull(symbolDto.getStepSize()) ? symbolDto.getStepSize().doubleValue() : null);
