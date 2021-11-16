@@ -44,7 +44,7 @@ public class BinanceTradeServiceImpl implements TradeService {
         symbolRepository.save(symbolConverter.convertFromDto(new SymbolDto().withSymbol(symbol).withOrderId(order.getOrderId())));
     }
 
-    public void closePosition(SymbolRecord symbolRecord) {
+    public void closePosition(SymbolRecord symbolRecord) throws Exception {
         BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance(applicationProperty.getKey(), applicationProperty.getSecret());
         BinanceApiRestClient client = factory.newRestClient();
         Long orderId = symbolRepository.findOne(symbolRecord.getSymbol()).getOrderId();
@@ -66,10 +66,13 @@ public class BinanceTradeServiceImpl implements TradeService {
                 client.newOrder(NewOrder.marketSell(symbolRecord.getSymbol(), qty.toString()));
                 break;
             } catch (Exception e) {
-                qty.set(qty.get()
-                        .multiply(BigDecimal.valueOf(0.99))
-                        .setScale(scale, RoundingMode.HALF_DOWN));
-                continue;
+                if(e.getMessage().contains("Account has insufficient balance for requested action")) {
+                    qty.set(qty.get()
+                            .multiply(BigDecimal.valueOf(0.99))
+                            .setScale(scale, RoundingMode.HALF_DOWN));
+                    continue;
+                }
+                throw new Exception(e);
             }
         }
     }

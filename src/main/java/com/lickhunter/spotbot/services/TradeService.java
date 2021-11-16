@@ -6,6 +6,6 @@ import java.math.BigDecimal;
 
 public interface TradeService {
     void newOrder(String symbol, BigDecimal qty);
-    void closePosition(SymbolRecord symbolRecord);
+    void closePosition(SymbolRecord symbolRecord) throws Exception;
 
 }

@@ -30,7 +30,7 @@ public class LunarCrushStrategy {
     private final TradeService tradeService;
     private final ApplicationController applicationController;
 
-    @Scheduled(fixedRateString = "3600000")
+    @Scheduled(fixedRateString = "${scheduler.rebalance}")
     public void rebalance() {
         applicationController.saveSymbol();
         applicationController.getSentiments();
